@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import {createUser} from '../Requests/authRequests'
 import { useNavigate } from 'react-router-dom'
 import {useLocation} from 'react-router-dom';
+import { useAuth } from "../Auth/authProvider";
+
 const LoginRegister = (props) => {
     const location = useLocation();
     const {isLogin} = location.state;
@@ -9,8 +12,9 @@ const LoginRegister = (props) => {
     const [password, setPassword] = useState('')
     const [passwordError, setPasswordError] = useState('')
     const navigate = useNavigate()
+    const auth = useAuth();
 
-    const validateAndLoginRegister = () => {
+    const validateAndLoginRegister = async () => {
         // Set initial error values to empty
         setUsernameError('')
         setPasswordError('')
@@ -36,6 +40,18 @@ const LoginRegister = (props) => {
             return
         }
 
+        if(isLogin)
+        {
+            await auth.loginAction({username, password });
+
+        }else{
+               const res =  await createUser({username, password});
+               if(res.status === 200) await auth.loginAction({username, password });
+               else{
+                   setUsernameError('Username is taken, choose another one')
+                   return
+               }
+        }
     }
 
     return (
