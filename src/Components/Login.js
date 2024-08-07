@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import {useLocation} from 'react-router-dom';
 import { useAuth } from "../Auth/authProvider";
 
-const LoginRegister = (props) => {
-    const location = useLocation();
-    const {isLogin} = location.state;
+const LoginRegister = ({isLogin}) => {
     const [username, setUsername] =useState('');
     const [usernameError, setUsernameError] = useState('')
     const [password, setPassword] = useState('')
@@ -45,13 +43,16 @@ const LoginRegister = (props) => {
             await auth.loginAction({username, password });
 
         }else{
-               const res =  await createUser({username, password});
-               if(res.status === 200) await auth.loginAction({username, password });
-               else{
-                   setUsernameError('Username is taken, choose another one')
-                   return
-               }
+            try {
+                await createUser({username, password});
+                await auth.loginAction({username, password });
+            }
+            catch (err) {
+                setUsernameError('Username is taken, choose another one')
+                return
+            }
         }
+        navigate("/");
     }
 
     return (

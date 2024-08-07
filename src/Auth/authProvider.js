@@ -11,11 +11,9 @@ const AuthProvider = ({ children }) => {
         try {
             const res = await userLogin(data)
             if (res.data) {
-                setUser(res.data.user);
-                // navigate("/dashboard");
+                setUser(res.data.username);
                 return;
             }
-            throw new Error(res.message);
         } catch (err) {
             console.error(err);
         }
@@ -24,7 +22,7 @@ const AuthProvider = ({ children }) => {
     const logOut = async () => {
         await userLogout(user)
         setUser(null);
-        navigate("/Welcome");
+        navigate("/");
     };
 
     return (

@@ -6,7 +6,8 @@ const Welcome = (props) => {
     const navigate = useNavigate()
 
     const navigateLoginRegister = (isLogin) => {
-        navigate('Login', {state:{isLogin: isLogin}})
+        const navigateTo = isLogin ? "Login" : "Register";
+        navigate(navigateTo);
     }
 
     return (
