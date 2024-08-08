@@ -15,14 +15,14 @@ const AuthProvider = ({ children }) => {
                 return;
             }
         } catch (err) {
-            console.error(err);
+            throw err;
         }
     };
 
     const logOut = async () => {
         await userLogout(user)
         setUser(null);
-        navigate("/");
+        navigate("/Welcome");
     };
 
     return (

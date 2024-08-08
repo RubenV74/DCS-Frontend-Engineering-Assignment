@@ -40,8 +40,13 @@ const LoginRegister = ({isLogin}) => {
 
         if(isLogin)
         {
-            await auth.loginAction({username, password });
-
+            try {
+                await auth.loginAction({username, password});
+            }
+            catch(err) {
+                setPasswordError('Invalid username or password')
+                return
+            }
         }else{
             try {
                 await createUser({username, password});
@@ -52,7 +57,7 @@ const LoginRegister = ({isLogin}) => {
                 return
             }
         }
-        navigate("/");
+        navigate("/chat");
     }
 
     return (

@@ -9,9 +9,8 @@ import userImg from "../images/login.png"
 
     return(
         <Header>
-            <img src={userImg} alt="user"/>
             <span> {auth.user}</span>
-            <Button variant="contained" color="error" onClick={auth.logOut}>Logout</Button>
+           {/* <Button variant="contained" color="error" onClick={auth.logOut}>Logout</Button>*/}
         </Header>
     )
 }
