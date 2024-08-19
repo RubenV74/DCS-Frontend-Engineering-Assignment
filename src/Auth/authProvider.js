@@ -1,4 +1,4 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {userLogin, userLogout} from "../Requests/authRequests";
 
@@ -6,15 +6,18 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loadingUser, setLoadingUser] = useState(true);
     const navigate = useNavigate();
     const loginAction = async (data) => {
         try {
             const res = await userLogin(data)
             if (res.data) {
                 setUser(res.data.username);
+                setLoadingUser(false);
                 return;
             }
         } catch (err) {
+            setLoadingUser(false);
             throw err;
         }
     };
@@ -26,7 +29,7 @@ const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{user, loginAction, logOut }}>
+        <AuthContext.Provider value={{user, loginAction, logOut, loadingUser }}>
             {children}
         </AuthContext.Provider>
     );

@@ -4,9 +4,10 @@ import Welcome from "./Components/Welcome";
 import LoginRegister from "./Components/Login";
 import AuthProvider from "./Auth/authProvider";
 import {useAuth} from "./Auth/authProvider";
-import Header from './Components/Header'
+import AppBar from './Components/AppBar'
 import ProtectedRoute from "./Components/ProtectedRoute";
-
+import UsersBar from "./Components/UsersBar";
+import ChatPage from "./Components/ChatPage";
 function App() {
     const user = useAuth();
   return (
@@ -24,9 +25,9 @@ function App() {
                         path="/chat"
                         element={
                         <ProtectedRoute>
-                            <div>
-                                <Header/>
-                            </div>
+                                <AppBar/>
+                                <UsersBar/>
+                                <ChatPage/>
                         </ProtectedRoute>
                         }
                     />
