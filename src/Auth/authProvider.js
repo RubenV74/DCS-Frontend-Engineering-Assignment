@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
         try {
             const res = await userLogin(data)
             if (res.data) {
-                setUser(res.data.username);
+                setUser(res.data);
                 setLoadingUser(false);
                 return;
             }

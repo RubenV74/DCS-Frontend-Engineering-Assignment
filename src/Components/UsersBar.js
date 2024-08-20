@@ -31,7 +31,7 @@ const  UsersBar =  () =>{
                 <CircularProgress style={{position: 'relative', top: '50%'}}
                 /> :
             <List>
-                {users.filter(user => user.username !== activeUser.user).map((user) => (
+                {users.filter(user => user.username !== activeUser.user.username).map((user) => (
                     <ListItem key={user._id} >
                             <Avatar/>
                             <ListItemText primary={user.username} sx={{marginLeft:3}} />

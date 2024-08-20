@@ -68,7 +68,7 @@ const ResponsiveAppBar = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            {auth.user}
+                            {auth.user.username}
                         </Typography>
                     </Box>
                 </Toolbar>

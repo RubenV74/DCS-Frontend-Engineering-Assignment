@@ -8,6 +8,7 @@ import AppBar from './Components/AppBar'
 import ProtectedRoute from "./Components/ProtectedRoute";
 import UsersBar from "./Components/UsersBar";
 import ChatPage from "./Components/ChatPage";
+import  Chat from './Components/Chat/Chat'
 function App() {
     const user = useAuth();
   return (
@@ -25,9 +26,9 @@ function App() {
                         path="/chat"
                         element={
                         <ProtectedRoute>
-                                <AppBar/>
-                                <UsersBar/>
-                                <ChatPage/>
+                                {/*<AppBar/>*/}
+                                {/*<UsersBar/>*/}
+                               <Chat/>
                         </ProtectedRoute>
                         }
                     />
