@@ -17,7 +17,7 @@ function App() {
           <AuthProvider>
             <Routes>
             <Route
-                path="/Welcome"
+                path="/*"
                 element={<Welcome/>}
             />
                 <Route path="/Login" element={<LoginRegister isLogin={true}/>}/>
