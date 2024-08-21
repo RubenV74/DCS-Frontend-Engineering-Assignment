@@ -30,4 +30,33 @@ Ensure you have the following installed on your system:
 Create a `.env` file in the root directory of the project and add the following:
 
 ```env
-REACT_APP_BACKEND_SERVER="http://localhost:5000/api/messages"
+REACT_APP_BACKEND_SERVER="https://dsc-backend-engineering-assignment.onrender.com"
+```
+### Running the Application
+
+Start the frontend development server:
+
+```env
+npm run start
+```
+
+## Deployment
+The application is deployed using Render and Netlify. The production server can be found at:
+
+   ```env
+   REACT_APP_SERVER_URL="https://dsc-backend-engineering-assignment.onrender.com"
+   ```
+Link to Netlify: 
+   ```env
+   https://coruscating-centaur-9b7606.netlify.app
+   ```
+
+## Built With
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- React
+- Material-UI
+- Axios
