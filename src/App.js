@@ -26,8 +26,8 @@ function App() {
                         path="/chat"
                         element={
                         <ProtectedRoute>
-                                {/*<AppBar/>*/}
-                                {/*<UsersBar/>*/}
+                                <AppBar/>
+                                <UsersBar/>
                                <Chat/>
                         </ProtectedRoute>
                         }
